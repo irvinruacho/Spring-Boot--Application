@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+    <div class="container md-4">
+        <a th:href="@{/new}" class="btn btn-success ">Nuevo</a>
+        <br> <br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th> ID </th>
+                <th> NOMBRES </th>
+                <th> TELEFONO </th>
+                <th> ACCIONES </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="persona:${lista}">
+                <td th:text="${persona.id}">  </td>
+                <td th:text="${persona.name}"> </td>
+                <td th:text="${persona.telephone}"> </td>
+                <td>
+                    <a th:href="@{/edit/}+${persona.id}" class="btn btn-primary">Editar</a>
+                    <a th:onclick="del([[${persona.id}]])" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a th:href="@{/new}" class="btn btn-success ">Nuevo</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" ></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="Funciones.js"></script>
+</body>
+</html>
